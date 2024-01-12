@@ -24,7 +24,7 @@ public class UserController extends UserServiceGrpc.UserServiceImplBase {
 
         UserRes userRes = UserRes.newBuilder()
                 .setId(saved.getId())
-                .setEmail(saved.getName())
+                .setName(saved.getName())
                 .setEmail(saved.getEmail())
                 .build();
 
@@ -39,7 +39,7 @@ public class UserController extends UserServiceGrpc.UserServiceImplBase {
 
         List<UserRes> userRes = users.stream().map(user -> UserRes.newBuilder()
                         .setId(user.getId())
-                        .setEmail(user.getName())
+                        .setName(user.getName())
                         .setEmail(user.getEmail())
                         .build())
                 .toList();
@@ -55,7 +55,7 @@ public class UserController extends UserServiceGrpc.UserServiceImplBase {
         userRepository.findAll().forEach(user -> {
             UserRes userRes = UserRes.newBuilder()
                     .setId(user.getId())
-                    .setEmail(user.getName())
+                    .setName(user.getName())
                     .setEmail(user.getEmail())
                     .build();
             responseObserver.onNext(userRes);
